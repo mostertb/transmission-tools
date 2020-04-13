@@ -14,7 +14,8 @@ Debug::enable();
 
 $application = new Application('Transmission Tools');
 $application->addCommands([
-    new SessionInformationCommand()
+    new SessionInformationCommand(),
+    new \Mostertb\TransmissionTools\Command\OrphanDirectoriesCommand()
 ]);
 
 $application->run();
