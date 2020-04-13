@@ -16,7 +16,7 @@ class Humanizer
         ];
 
         $index = 0;
-        while (($bytesPerSecond / 1024) >= 1 && count($units) < 8) {
+        while (($bytesPerSecond / 1024) >= 1 && $index < (count($units)-1)) {
             $bytesPerSecond = $bytesPerSecond / 1024;
             $index++;
         }
