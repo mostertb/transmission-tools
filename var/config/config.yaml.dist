@@ -1,0 +1,14 @@
+clients:
+  - name: Local
+    host: 127.0.0.1
+    port: 9091
+
+  - name: Disabled
+    host: 127.0.0.1
+    port: 9092
+    username: transmission
+    password: 123456789
+    enabled: false
+
+timeout: 30
+

@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+use Mostertb\TransmissionTools\Command\SessionInformationCommand;
+use Symfony\Component\Console\Application;
+use Symfony\Component\ErrorHandler\Debug;
+use Symfony\Component\ErrorHandler\ErrorHandler;
+
+require_once __DIR__.'/vendor/autoload.php';;
+
+// Configure Error Handler
+ErrorHandler::register();
+Debug::enable();
+
+$application = new Application('Transmission Tools');
+$application->addCommands([
+    new SessionInformationCommand()
+]);
+
+$application->run();

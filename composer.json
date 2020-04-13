@@ -1,0 +1,28 @@
+{
+    "name": "mostertb/transmission-tools",
+    "description": "House-keeping and management CLI tools for Transmission",
+    "type": "project",
+    "require": {
+        "php": "~7.2",
+        "symfony/console": "^5.0",
+        "symfony/config": "^5.0",
+        "symfony/error-handler": "^5.0",
+        "symfony/finder": "^5.0",
+        "symfony/lock": "^5.0",
+        "mostertb/transmission-php": "^1.1",
+        "symfony/yaml": "^5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brad Mostert",
+            "email": "b@sinkwa.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^5.0"
+    },
+    "autoload": {
+        "psr-4": { "Mostertb\\TransmissionTools\\": "src" }
+    }
+}

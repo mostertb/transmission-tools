@@ -1,0 +1,19 @@
+# Common tool cruft
+.buildpath
+.project
+.settings
+.DS_Store
+.idea
+
+# Composer Files
+composer.phar
+composer.lock
+/vendor/
+
+# Runtime files
+/var/lock/*
+/var/log/*
+/var/config/config.yaml
+
+# Don't ignore .gitkeep files in any directory
+!/**/.gitkeep
