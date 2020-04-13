@@ -80,20 +80,29 @@ class OrphanDirectoriesCommand extends AbstractCommand
         }
 
         $totalBytes = 0;
-        foreach ($finder as $file){
-            if(!in_array($file->getPathname(), $torrentDirectories)){
-                $directorySize = $file->getSize();
+        foreach ($finder as $directory){
+            if(!in_array($directory->getPathname(), $torrentDirectories)){
                 if($namesOnly){
-                    $output->writeln($file->getPathname());
+                    $output->writeln($directory->getPathname());
                 } else {
-                    $output->writeln(str_pad(Humanizer::bytes($directorySize), 12).$file->getPathname());
-                }
 
-                $totalBytes += $directorySize;
+                    // Determine size of contents of directory
+                    $contentsFinder  = new Finder();
+                    $contentsFinder->files()->in($directory->getPathname());
+                    $directorySize = 0;
+                    foreach ($contentsFinder as $file){
+                        $directorySize += $file->getSize();
+                    }
+                    $totalBytes += $directorySize;
+
+                    $output->writeln(str_pad(Humanizer::bytes($directorySize), 12).$directory->getPathname());
+                }
             }
         }
 
-        $output->writeln('Total orphaned size: '.Humanizer::bytes($totalBytes));
+        if(!$namesOnly){
+            $output->writeln('Total orphaned size: '.Humanizer::bytes($totalBytes));
+        }
         return 0;
     }
 }
