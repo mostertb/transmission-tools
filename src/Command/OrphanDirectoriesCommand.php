@@ -70,7 +70,7 @@ class OrphanDirectoriesCommand extends AbstractCommand
 
             foreach ($client->all() as $torrent){
                 if(strpos($torrent->getDownloadDir(), $path) === 0){ // torrent is under the path we are evaluating
-                    $torrentDirectories[] = $torrent->getDownloadDir();
+                    $torrentDirectories[] = $torrent->getDownloadDir().'/'.$torrent->getName();
                 }
             }
         }
