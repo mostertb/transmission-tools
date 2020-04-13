@@ -79,16 +79,21 @@ class OrphanDirectoriesCommand extends AbstractCommand
             $output->writeln('<error>Clients checked have no torrents under: '.$path.'</error>');
         }
 
+        $totalBytes = 0;
         foreach ($finder as $file){
             if(!in_array($file->getPathname(), $torrentDirectories)){
+                $directorySize = $file->getSize();
                 if($namesOnly){
                     $output->writeln($file->getPathname());
                 } else {
-                    $output->writeln(str_pad(Humanizer::bytes($file->getSize()), 12).$file->getPathname());
+                    $output->writeln(str_pad(Humanizer::bytes($directorySize), 12).$file->getPathname());
                 }
+
+                $totalBytes += $directorySize;
             }
         }
 
+        $output->writeln('Total orphaned size: '.Humanizer::bytes($totalBytes));
         return 0;
     }
 }
