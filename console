@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+use Mostertb\TransmissionTools\Command\OrphanDirectoriesCommand;
+use Mostertb\TransmissionTools\Command\OrphanFilesCommand;
 use Mostertb\TransmissionTools\Command\SessionInformationCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\ErrorHandler\Debug;
@@ -15,7 +17,8 @@ Debug::enable();
 $application = new Application('Transmission Tools');
 $application->addCommands([
     new SessionInformationCommand(),
-    new \Mostertb\TransmissionTools\Command\OrphanDirectoriesCommand()
+    new OrphanDirectoriesCommand(),
+    new OrphanFilesCommand()
 ]);
 
 $application->run();

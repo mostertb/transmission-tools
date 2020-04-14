@@ -15,7 +15,7 @@ class OrphanDirectoriesCommand extends AbstractCommand
 {
     protected function configure()
     {
-        $this->setName('orphan-directories:list')
+        $this->setName('orphan:directories-list')
             ->setDescription('Finds directories under the provided path that are not associated with a torrent')
             ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Path to evaluate directories under')
             ->addOption('names-only', null, InputOption::VALUE_NONE,
